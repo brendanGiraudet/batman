@@ -25,44 +25,29 @@ class Player
         // game loop
         while (true)
         {
-            Direction bombDir = Console.ReadLine(); // the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
-
-            switch (bombDir)
-            {
-                case Up:
-                break;
-                case UpRight:
-                break;
-                case Right:
-                break;
-                case DownRight:
-                break;
-                case Down:
-                break;
-                case DownLeft:
-                break;
-                case Left:
-                break;
-                case UpLeft:
-                break;
-                default:
-                break;
-            }
+            var bombDir = Console.ReadLine(); // the direction of the bombs from batman's current location (U, UR, R, DR, D, DL, L or UL)
+           if(bombDir.Contains("U"))
+           {
+               H = Y0;
+               Y0 -= Y0/2;
+           }
+           if(bombDir.Contains("D"))
+           {
+               Y0 += (H-Y0)/2;
+           }
+           if(bombDir.Contains("R"))
+           {
+               X0 += (W-X0)/2;
+           }
+           if(bombDir.Contains("L"))
+           {
+               X0 -= X0/2;
+               W = X0;
+           }
 
 
             // the location of the next window Batman should jump to.
-            Console.WriteLine("0 0");
+            Console.WriteLine(X0 + " " + Y0);
         }
     }
-}
-enum Direction
-{
-    Up = "U",
-    UpRight = "UR",
-    Right = "R",
-    DownRight = "DR",
-    Down = "D",
-    DownLeft = "DL",
-    Left = "L",
-    UpLeft = "UL"
 }
